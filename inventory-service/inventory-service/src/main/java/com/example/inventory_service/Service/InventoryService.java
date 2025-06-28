@@ -65,7 +65,7 @@ public class InventoryService {
         return inventoryRepository.searchByStatus(status);
     }
 
-    
+
     public List<Inventory> searchByItemNameAndStatus(String itemName, String status) {
         return inventoryRepository.searchByItemNameAndStatus(itemName, status);
     }
