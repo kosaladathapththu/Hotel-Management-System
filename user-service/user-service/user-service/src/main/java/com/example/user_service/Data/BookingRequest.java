@@ -1,44 +1,16 @@
-package com.hotel.userservice.Model;
+package com.example.user_service.Data;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
 
-@Entity
-@Table(name = "user") // Optional: explicitly set table name
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class BookingRequest {
     private Long userId;
     private Long roomId;
-
     private LocalDate checkInDate;
     private LocalDate checkOutDate;
-
     private String status;
+    private Double totalAmount;
 
-    // Constructors
-    public User() {}
-
-    public User(Long id, Long userId, Long roomId, LocalDate checkInDate, LocalDate checkOutDate, String status) {
-        this.id = id;
-        this.userId = userId;
-        this.roomId = roomId;
-        this.checkInDate = checkInDate;
-        this.checkOutDate = checkOutDate;
-        this.status = status;
-    }
-
-    // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // Getters and setters
 
     public Long getUserId() {
         return userId;
@@ -78,5 +50,13 @@ public class User {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(Double totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }
