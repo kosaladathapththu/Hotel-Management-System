@@ -1,24 +1,20 @@
 package com.example.admin.Data;
 
-
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "admin")
 public class Admin {
+
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private int id;
+    private int id;
 
-    @Column(name = "name")
-   private String name;
+    private String name;
+    private String email;
+    private String password;
 
-    @Column(name = "email")
-   private String email;
-
-    @Column(name = "password")
-   private String password;
+    public Admin() {}
 
     public Admin(int id, String name, String email, String password) {
         this.id = id;
@@ -26,9 +22,8 @@ public class Admin {
         this.email = email;
         this.password = password;
     }
-    public Admin() {
-    }
 
+    // Getters and Setters 👇
 
     public int getId() {
         return id;
