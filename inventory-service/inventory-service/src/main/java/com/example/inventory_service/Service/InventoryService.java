@@ -14,23 +14,23 @@ public class InventoryService {
     @Autowired
     private InventoryRepository inventoryRepository;
 
-    // 🔄 Get all inventory items
+
     public List<Inventory> getAllInventory() {
         return inventoryRepository.findAll();
     }
 
-    // 🔍 Get inventory item by ID
+
     public Inventory getInventoryById(Long id) {
         Optional<Inventory> optional = inventoryRepository.findById(id);
         return optional.orElse(null);
     }
 
-    // ➕ Add new inventory item
+
     public Inventory saveInventory(Inventory inventory) {
         return inventoryRepository.save(inventory);
     }
 
-    // ✏️ Update inventory item
+
     public Inventory updateInventory(Long id, Inventory updatedInventory) {
         Optional<Inventory> existingInventoryOpt = inventoryRepository.findById(id);
 
@@ -50,22 +50,22 @@ public class InventoryService {
         }
     }
 
-    // ❌ Delete inventory by ID
+
     public void deleteInventory(Long id) {
         inventoryRepository.deleteById(id);
     }
 
-    // 🔍 Search by itemName
+
     public List<Inventory> searchByItemName(String itemName) {
         return inventoryRepository.searchByItemName(itemName);
     }
 
-    // 🔍 Search by status
+
     public List<Inventory> searchByStatus(String status) {
         return inventoryRepository.searchByStatus(status);
     }
 
-    // 🔍 Search by both itemName + status
+    
     public List<Inventory> searchByItemNameAndStatus(String itemName, String status) {
         return inventoryRepository.searchByItemNameAndStatus(itemName, status);
     }
