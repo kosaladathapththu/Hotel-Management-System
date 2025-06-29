@@ -8,8 +8,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/users")
@@ -22,7 +21,7 @@ public class UserController {
     @Autowired
     private RestTemplate restTemplate;
 
-    // ✅ Register with error handling
+    // ✅ 1. Register new user
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         try {
@@ -33,36 +32,48 @@ public class UserController {
         }
     }
 
-    // ✅ Get all users
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
-    }
-
-    // ✅ Get user by ID
-    @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable Long id) {
-        return userService.getUserById(id);
-    }
-
-    // ✅ Login with error handling
+    // ✅ 2. Login user + show available rooms
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User loginUser) {
         try {
+            // 🔐 Authenticate user
             User loggedInUser = userService.login(loginUser.getEmail(), loginUser.getPassword());
-            return ResponseEntity.ok(loggedInUser);
+
+            // 🏠 Fetch available rooms from Room Service
+            String roomServiceUrl = "http://localhost:8086/api/rooms";
+            ResponseEntity<Object[]> roomResponse = restTemplate.getForEntity(roomServiceUrl, Object[].class);
+
+            // 📦 Combine user info + room list
+            Map<String, Object> response = new HashMap<>();
+            response.put("user", loggedInUser);
+            response.put("availableRooms", roomResponse.getBody());
+
+            return ResponseEntity.ok(response);
+
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
         }
     }
 
-    // ✅ Book room (booking logic already working)
+    // ✅ 3. Get all users
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    // ✅ 4. Get user by ID
+    @GetMapping("/{id}")
+    public Optional<User> getUserById(@PathVariable Long id) {
+        return userService.getUserById(id);
+    }
+
+    // ✅ 5. Book a room (calls Booking Microservice)
     @PostMapping("/book-room")
     public ResponseEntity<String> bookRoom(@RequestBody BookingRequest request) {
         String bookingServiceUrl = "http://localhost:8082/api/bookings";
 
         try {
-            // 🔐 Step 1: Check if user exists
+            // 🔍 Step 1: Check user exists
             Optional<User> user = userService.getUserById(request.getUserId());
 
             if (user.isEmpty()) {
@@ -70,7 +81,7 @@ public class UserController {
                         .body("❌ Booking failed: User not found. Please login or register.");
             }
 
-            // ✅ Step 2: Send booking request
+            // ✅ Step 2: Send booking request to Booking Service
             ResponseEntity<String> response = restTemplate.postForEntity(
                     bookingServiceUrl,
                     request,
@@ -84,5 +95,4 @@ public class UserController {
                     .body("❌ Booking Failed: " + e.getMessage());
         }
     }
-
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
@@ -22,46 +23,66 @@ public class BookingService {
         this.bookingRepository = bookingRepository;
     }
 
+    // ✅ Create Booking - with double booking prevention
     public Booking createBooking(Booking booking) {
-        // ✅ Step 1: Check room availability from Room Service
+        // ✅ Step 1: Check if Room exists using Room Service
         String roomUrl = "http://localhost:8086/api/rooms/" + booking.getRoomId();
         try {
-            restTemplate.getForObject(roomUrl, Object.class); // ✅ Just check if exists
+            restTemplate.getForObject(roomUrl, Object.class); // Just a check, not storing
         } catch (Exception e) {
+            System.out.println("❌ Error fetching room: " + e.getMessage());
             throw new RuntimeException("❌ Room not found in Room Service!");
         }
 
-        // ✅ Step 2: Check room already booked (date overlap)
-        if (isRoomBooked(booking.getRoomId(), booking.getCheckInDate(), booking.getCheckOutDate())) {
-            throw new RuntimeException("❌ Room already booked for selected dates!");
+        // ✅ Step 2: Check if room is already booked in given date range
+        boolean isAlreadyBooked = isRoomAlreadyBooked(
+                booking.getRoomId(),
+                booking.getCheckInDate(),
+                booking.getCheckOutDate()
+        );
+
+        if (isAlreadyBooked) {
+            throw new RuntimeException("❌ Room is already booked for selected dates!");
         }
 
-        // ✅ Step 3: Auto-status
+        // ✅ Step 3: Set status
         booking.setStatus("CONFIRMED");
 
-        // ❗ You can calculate total amount manually in frontend (if no price per day here)
+        // ✅ Step 4: Calculate totalAmount based on days (optional improvement)
+        long days = ChronoUnit.DAYS.between(booking.getCheckInDate(), booking.getCheckOutDate());
+        if (days <= 0) {
+            throw new RuntimeException("❌ Invalid booking dates. Check-in must be before check-out.");
+        }
+
+        // You may get room price from room service here (optional enhancement)
+        // For now assume totalAmount is already provided
+
+        // ✅ Step 5: Save booking
         return bookingRepository.save(booking);
     }
 
+    // ✅ Get all bookings
     public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
 
+    // ✅ Get one booking
     public Optional<Booking> getBookingById(Long id) {
         return bookingRepository.findById(id);
     }
 
+    // ✅ Delete booking
     public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);
     }
 
-    // 🧠 Check overlapping booking dates
-    public boolean isRoomBooked(Long roomId, java.time.LocalDate checkIn, java.time.LocalDate checkOut) {
+    // 🧠 Overlap check: Is room booked for selected dates?
+    public boolean isRoomAlreadyBooked(Long roomId, LocalDate newCheckIn, LocalDate newCheckOut) {
         List<Booking> bookings = bookingRepository.findAll();
 
-        return bookings.stream().anyMatch(b ->
-                b.getRoomId().equals(roomId) &&
-                        !(checkOut.isBefore(b.getCheckInDate()) || checkIn.isAfter(b.getCheckOutDate()))
+        return bookings.stream().anyMatch(existing ->
+                existing.getRoomId().equals(roomId) &&
+                        !(newCheckOut.isBefore(existing.getCheckInDate()) || newCheckIn.isAfter(existing.getCheckOutDate()))
         );
     }
 }
