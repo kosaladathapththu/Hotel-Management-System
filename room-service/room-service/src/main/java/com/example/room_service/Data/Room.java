@@ -1,14 +1,14 @@
 package com.example.room_service.Data;
 
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "room")
 public class Room {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "name")
@@ -20,29 +20,27 @@ public class Room {
     @Column(name = "description")
     private String description;
 
+//    @Column(name = "is_available")
+//    private String isAvailable;
+
     @Column(name = "price_per_day")
     private double pricePerDay;
 
     @Column(name = "capacity")
     private int capacity;
-
-    // 🔹 Default constructor
     public Room() {
     }
 
-    // 🔹 Constructor with fields
-    public Room(int id, String name, String type, String description, double pricePerDay, int capacity) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.description = description;
-        this.pricePerDay = pricePerDay;
-        this.capacity = capacity;
-    }
-
-    // 🔹 Getters & Setters
     public int getId() {
         return id;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public void setId(int id) {
@@ -73,6 +71,14 @@ public class Room {
         this.description = description;
     }
 
+//    public String isAvailable() {
+//        return isAvailable;
+//    }
+
+//    public void setAvailable(String available) {
+//        isAvailable = available;
+//    }
+
     public double getPricePerDay() {
         return pricePerDay;
     }
@@ -81,13 +87,13 @@ public class Room {
         this.pricePerDay = pricePerDay;
     }
 
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
+    public Room(int id, int capacity, double pricePerDay, String description, String name, String type) {
+        this.id = id;
         this.capacity = capacity;
+        this.pricePerDay = pricePerDay;
+//        this.isAvailable = isAvailable;
+        this.description = description;
+        this.name = name;
+        this.type = type;
     }
-
-
 }
