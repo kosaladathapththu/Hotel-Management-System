@@ -20,28 +20,18 @@ public class RoomService {
         return roomRepository.findAll();
     }
 
-    public  Room getRoomById(int id) {
-        Optional<Room> Room = roomRepository.findById(id);
-        if (Room.isPresent()) {
-            return Room.get();
-        }
-        return null;
-    }
-
     public Room createRoom(Room room) {
         return roomRepository.save(room);
     }
 
-    public Room updateRoom(Room room) {
-        return roomRepository.save(room)    ;
+    public Optional<Room> getRoomById(int id) {
+        return roomRepository.findById(id);
     }
 
-    public Room deleteRoomById(int id) {
-        Optional<Room> Room = roomRepository.findById(id);
-        if (Room.isPresent()) {
-            roomRepository.deleteById(id);
-        }
-        return Room.get();
+    public void deleteRoom(int id) {
+        roomRepository.deleteById(id);
     }
+
+
 
 }
