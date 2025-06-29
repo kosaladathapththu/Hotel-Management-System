@@ -1,0 +1,5 @@
+com\example\room_service\Service\RoomService.class
+com\example\room_service\Data\Room.class
+com\example\room_service\Data\RoomRepository.class
+com\example\room_service\RoomServiceApplication.class
+com\example\room_service\Controller\RoomController.class
