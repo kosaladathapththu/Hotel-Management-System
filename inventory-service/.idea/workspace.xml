@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="79b7f3ff-9230-4015-b567-21515dd10ca8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/example/inventory_service/Controller/InventoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/example/inventory_service/Data/Inventory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/example/inventory_service/Data/InventoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/example/inventory_service/Service/InventoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../room-service/room-service/src/main/java/com/example/room_service/DTO/Booking.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ureka-server/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ureka-server/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ureka-server/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ureka-server/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ureka-server/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ureka-server/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ureka-server/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/user-service/user-service/src/main/java/com/example/user_service/Controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/user-service/user-service/src/main/java/com/example/user_service/Data/BookingRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/user-service/user-service/src/main/java/com/example/user_service/Data/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/user-service/user-service/src/main/java/com/example/user_service/Data/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../user-service/user-service/user-service/src/main/java/com/example/user_service/Service/UserService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "kosaladathapththu"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/kosaladathapththu/Hotel-Management-System.git",
+    "accountId": "ea2f4dd4-17b7-4c4b-8f59-7c23c55680d1"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2zdJUfwKoE1DXHa1xZeCeIlNKEF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/NIBM/HNDSE/EAD 2/CW/Hotel-Management-System/inventory-service"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="79b7f3ff-9230-4015-b567-21515dd10ca8" name="Changes" comment="" />
+      <created>1752055035325</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1752055035325</updated>
+    </task>
+    <servers />
+  </component>
+</project>

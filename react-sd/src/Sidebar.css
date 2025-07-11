@@ -1,0 +1,126 @@
+/* Sidebar.css */
+
+.sidebar {
+  background-color: #001f3f;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+  z-index: 1000;
+  width: 220px;
+}
+
+.sidebar.collapsed {
+  width: 60px;
+}
+
+.sidebar.mobile-open {
+  left: 0;
+  width: 220px;
+}
+
+.sidebar-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #f59e0b;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 16px;
+}
+
+.sidebar-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-links a:hover {
+  color: #fcd34d;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.collapse-btn {
+  background: none;
+  border: none;
+  color: #fcd34d;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.mobile-header {
+  display: none;
+  background-color: #001f3f;
+  color: white;
+  padding: 12px 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #f59e0b;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    left: -220px;
+    width: 220px;
+  }
+
+  .mobile-header {
+    display: flex;
+  }
+}
+
+.admin-email {
+  padding: 10px 15px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

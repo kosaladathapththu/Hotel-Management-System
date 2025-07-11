@@ -1,0 +1,4 @@
+com\hotel\userservice\Repository\UserRepository.class
+com\hotel\userservice\Controller\UserController.class
+com\hotel\userservice\UserserviceApplication.class
+com\hotel\userservice\Model\User.class

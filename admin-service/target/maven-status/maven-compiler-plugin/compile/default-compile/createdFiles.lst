@@ -1,0 +1,5 @@
+com\example\admin\AdminApplication.class
+com\example\admin\Data\Admin.class
+com\example\admin\Controller\AdminController.class
+com\example\admin\Service\AdminService.class
+com\example\admin\Data\AdminRepository.class
